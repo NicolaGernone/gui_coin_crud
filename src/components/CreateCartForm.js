@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { createCart } from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 const CreateCartForm = () => {
   const [cartName, setCartName] = useState('');
@@ -15,10 +16,9 @@ const CreateCartForm = () => {
 
     // Crear un nuevo cart con un item
     const newCart = {
-      name: cartName,
       items: [
         {
-          id: Math.random().toString(36).substr(2, 9), // UUID-like generation
+          id: uuidv4(),
           name: itemName,
           quantity: itemQuantity,
           price: itemPrice,

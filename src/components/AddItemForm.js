@@ -1,6 +1,7 @@
 // src/components/AddItemForm.js
 import React, { useState } from 'react';
 import { updateCart } from '../services/api';
+import { v4 as uuidv4 } from 'uuid';
 
 const AddItemForm = ({ cartId, onItemAdded }) => {
   const [itemName, setItemName] = useState('');
@@ -11,7 +12,7 @@ const AddItemForm = ({ cartId, onItemAdded }) => {
   const handleAddItem = async (e) => {
     e.preventDefault();
     const newItem = {
-      id: Math.random().toString(36).substr(2, 9), // UUID-like generation
+      id: uuidv4(),
       name: itemName,
       quantity: itemQuantity,
       price: itemPrice,
